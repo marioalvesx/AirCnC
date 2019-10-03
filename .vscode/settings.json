@@ -1,8 +1,30 @@
 {
+    // Aumenta fonte do terminal
+    "terminal.integrated.fontSize": 14,
+
+    // Define tema dos icones na sidebar
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.tabSize": 2,
+    "extensions.ignoreRecommendations": true,
+    "emmet.syntaxProfiles": {
+        "javascript": "jsx",
+    },
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact",
+    },
+    "javascript.updateImportsOnFileMove.enabled": "never",
+    "gitlens.codeLens.recentChange.enabled": false,
+    "gitlens.codeLens.authors.enabled": false,
+    "gitlens.codeLens.enabled": false,
+    "git.enableSmartCommit": true,
+    "editor.parameterHints.enabled": false,
+
     "workbench.colorCustomizations": {
         "activityBar.background": "#557faf",
         "activityBar.foreground": "#e7e7e7",
         "activityBar.inactiveForeground": "#e7e7e799"
     },
-    "peacock.color": "#43668e"
+    "peacock.color": "#43668e",
+    "git.ignoreLimitWarning": true
 }
