@@ -16,8 +16,8 @@ export default function List() {
         })
     }, []);
     
-// Conceito importante do React: PROPRIEDADE
-// Exemplo: style={styles.logo} source={logo}
+    // Conceito importante do React: PROPRIEDADE
+    // Exemplo: style={styles.logo} source={logo}
 
     return (
         <SafeAreaView style={styles.container}>
@@ -41,7 +41,4 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginTop: 10
     },
-
-
-
 });
