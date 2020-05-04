@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { withNavigation } from 'react-navigation';
-import { View, StyleSheet, Text, FlatList, Image, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 import api from '../services/api';
 
-// Criando um componente do zero
+// import styles from './style';
+
 function SpotList({ tech, navigation }) {
     const [spots, setSpots] = useState([]);
-
+    
     useEffect(() => {
         async function loadSpots() {
             const response = await api.get('/spots', {
@@ -19,28 +20,28 @@ function SpotList({ tech, navigation }) {
 
         loadSpots();
     }, []);
-
-    function handleNavigate(id) { // Função para saber qual Spot foi clicado para fazer a reserva
+    
+    function handleNavigate(id) { // id do spot que ele clicou.
         navigation.navigate('Book', { id });
     }
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}> Empresas que usam <Text style={styles.bold}>{tech}</Text></Text>
+            <Text style={styles.title}>Companies that use <Text style={styles.bold}>{tech}</Text></Text>
         
             <FlatList
                 style={styles.list}
                 data={spots}
                 keyExtractor={spot => spot._id}
-                horizontal
+                horizontal // Itens na horizontal, um ao lado do outro
                 showsHorizontalScrollIndicator={false}
                 renderItem={({ item }) => (
                     <View style={styles.listItem}>
-                        <Image  style={styles.thumbnail} source={{ uri: item.thumbnail_url }} />
-                        <Text style={styles.company}>{item.company} </Text>
-                        <Text style={styles.price}>{item.price ? `R$${item.price}/dia` : 'GRATUITO'}</Text>
-                        <TouchableOpacity onPress={() => handleNavigate(item._id)} style={styles.button}> 
-                            <Text style={styles.buttonText}>Solicitar reserva </Text>
+                        <Image style={styles.thumbnail} source={{ uri: item.thumbnail_uri }}/>
+                        <Text style={styles.company}>{item.company}</Text>
+                        <Text style={styles.price}>{item.price ? `R$${item.price}/dia` : 'FREE'}</Text>
+                        <TouchableOpacity onPress={handleNavigate} style={styles.button}>
+                            <Text style={styles.buttonText}>Request reservation</Text>
                         </TouchableOpacity>
                     </View>
                 )}
@@ -67,7 +68,6 @@ const styles = StyleSheet.create({
 
     list: {
         paddingHorizontal: 20,
-
     },
 
     listItem: {
@@ -75,14 +75,14 @@ const styles = StyleSheet.create({
     },
 
     thumbnail: {
-        width: 180,
-        height: 100,
+        width: 200,
+        height: 120,
         resizeMode: 'cover',
-        borderRadius: 2,
+        borderRadius: 2
     },
 
     company: {
-        fontSize: 22,
+        fontSize: 24,
         fontWeight: 'bold',
         color: '#333',
         marginTop: 10,
@@ -95,20 +95,18 @@ const styles = StyleSheet.create({
     },
 
     button: {
-        height: 28,
+        height: 32,
         backgroundColor: '#f05a5b',
         justifyContent: 'center',
-        alignItems: 'center',
         borderRadius: 2,
-        marginTop: 15,
-        marginBottom: 10 // Espaço para borda da tela não ficar em cima do botão
+        marginTop: 15
     },
 
     buttonText: {
         color: '#FFF',
         fontWeight: 'bold',
-        fontSize: 14,
-    }
+        fontSize: 15,
+    },
 
 });
 

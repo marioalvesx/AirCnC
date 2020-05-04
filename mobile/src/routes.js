@@ -1,16 +1,15 @@
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 
-import Login from'./pages/Login';
-import List from'./pages/List';
-import Book from'./pages/Book';
+import Login from './pages/Login/Login';
+import List from './pages/Lists/List';
+import Book from './pages/Books/Book';
 
 const Routes = createAppContainer(
     createSwitchNavigator({
-        Login,
-        List,
+        Login, 
+        List, 
         Book
     })
-);
+)
 
-// Exportand Rotas deste arquivo
 export default Routes;

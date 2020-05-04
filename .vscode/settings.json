@@ -22,8 +22,10 @@
 
     "workbench.colorCustomizations": {
         "activityBar.background": "#557faf",
+        "activityBar.activeBorder": "#d6a8be",
         "activityBar.foreground": "#e7e7e7",
-        "activityBar.inactiveForeground": "#e7e7e799"
+        "activityBar.inactiveForeground": "#e7e7e799",
+        "activityBar.activeBackground": "#557faf"
     },
     "peacock.color": "#43668e",
     "git.ignoreLimitWarning": true
